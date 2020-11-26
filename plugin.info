@@ -1,0 +1,9 @@
+{
+    "title": "$:/plugins/ruivieira/devthing",
+    "description": "devthing project manager",
+    "author": "Rui Vieira",
+    "version": "0.0.1",
+    "core-version": ">=5.0.8",
+    "source": "https://github.com/ruivieira/devthing",
+    "plugin-type": "plugin"
+}
