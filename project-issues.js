@@ -17,23 +17,23 @@ Link to an issue
 
   exports.name = "project-issues";
 
-  exports.params = [{ name: "project" }];
+  exports.params = [{ name: "project" }, { name: "show", default: "open" }];
 
   /*
     Run the macro
     */
-  exports.run = function (project) {
-    let issues = $tw.wiki
-      .getTiddlersWithTag("issue")
-      .map((name) => $tw.wiki.getTiddler(name))
-      .filter(
-        (tiddle) =>
-          tiddle.fields["issue.project"] != undefined &&
-          tiddle.fields["issue.project"] == project
-      );
+  exports.run = function (project, show) {
+    let filter = `[tag[issue]field:issue.project[${project}]]`;
 
-    return issues
-      .map((tiddle) => `* <<issue ${tiddle.fields.title}>>`)
-      .join("\n");
+    if (show == "open") {
+      filter += " +[!field:issue.status[done]]";
+    } else if (show == "closed") {
+      filter += " +[field:issue.status[done]]";
+    }
+
+    console.log(filter);
+    const issues = $tw.wiki.filterTiddlers(filter);
+
+    return issues.map((issue) => `* <<issue ${issue}>>`).join("\n");
   };
 })();

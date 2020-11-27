@@ -1,0 +1,63 @@
+title: $:/themes/ruivieira/devthing/base
+tags: [[$:/tags/Stylesheet]]
+list-after: $:/themes/tiddlywiki/vanilla/base
+
+html, body {
+    font-family: 'ubuntu_monoregular', monospace;
+}
+
+a.tc-tiddlylink,
+a.tc-tiddlylink-external,
+a.tc-tiddlylink-external:visited {
+    color: #ca6700;
+    background: rgb(240, 240, 240);
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 2px 2px 2px;
+}
+
+a.tc-tiddlylink:hover,
+a.tc-tiddlylink-external:hover,
+a.tc-tiddlylink-external:visited:hover {
+    color: white !important;
+    background: #ca6700;
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 2px 2px 2px;
+}
+
+.tc-tiddler-frame .tc-tiddler-body {
+    font-size: 0.8rem;
+    line-height: 22px;
+}
+
+
+button.tc-tag-label, span.tc-tag-label {
+    display: inline-block;
+    padding: 0.3em 0.7em 0.3rem 0.7em;
+    font-size: 0.7em;
+    font-weight: 400;
+    line-height: 1.2em;
+    color: #ffffff;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #ffecb4;
+    border-radius: 0.35em;
+}
+
+a.tc-tiddlylink-external::before {
+    content: "\2615 ";
+}
+
+mark {
+    background: rgb(83%, 100%, 64%);
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 2px 2px 2px;
+}
+
+code, pre {
+    color: rgb(100, 100, 100);
+    background: rgb(240, 240, 240);
+    border-radius: 4px 4px 4px 4px;
+    padding: 2px 2px 2px 2px;
+    font-family: 'ubuntu_monoregular', monospace;
+    font-size: 0.8rem;
+}

@@ -25,11 +25,20 @@ Link to an issue
   exports.run = function (code) {
     let issue = $tw.wiki.getTiddler(code);
     let status = issue.fields["issue.status"];
+    let description = issue.fields["issue.description"];
 
-    if (status != undefined && status == "done") {
-      return `~~[[${code}]]~~ {{$:/plugins/ruivieira/devthing/harvey/full}}`;
-    } else {
-      return `[[${code}]] {{$:/plugins/ruivieira/devthing/harvey/half}}`;
+    let wiki_link =
+      description != undefined
+        ? `[[[${code}] ${description}|${code}]]`
+        : `[[${code}]]`;
+
+    if (status != undefined) {
+      if (status == "done") {
+        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/full}} ~~${wiki_link}~~`;
+      } else {
+        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/half}} ${wiki_link}`;
+      }
     }
+    return wiki_link;
   };
 })();
