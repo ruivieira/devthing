@@ -61,3 +61,10 @@ code, pre {
     font-family: 'ubuntu_monoregular', monospace;
     font-size: 0.8rem;
 }
+
+.issue-summary {
+    background: rgb(92%, 92%, 92%);
+    border-radius: 4px;
+    padding: 8px;
+    font-size:0.8rem;
+}

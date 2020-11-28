@@ -173,6 +173,18 @@ Error message and password prompt
 
 <li>ISSUE-10</li>
 
+<li>ISSUE-11</li>
+
+<li>ISSUE-12</li>
+
+<li>ISSUE-13</li>
+
+<li>ISSUE-14</li>
+
+<li>ISSUE-15</li>
+
+<li>ISSUE-16</li>
+
 <li>ISSUE-2</li>
 
 <li>ISSUE-3</li>
@@ -192,6 +204,8 @@ Error message and password prompt
 <li>Issues</li>
 
 <li>Projects</li>
+
+<li>README</li>
 
 </ul>
 </p>
@@ -10035,7 +10049,8 @@ Error message and password prompt
 }</pre>
 </div>
 <div created="20201126191319973" modified="20201126191319973" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki">
-<pre>[[DevThing core]]
+<pre>[[README]]
+[[DevThing core]]
 [[Issues]]
 [[Projects]]</pre>
 </div>
@@ -10152,9 +10167,21 @@ Error message and password prompt
             &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
             &quot;text&quot;: &quot;svg.em-icon {\n    width: 1em;\n    height: 1em;\n    margin-bottom: -0.125em;\n}&quot;
         },
+        &quot;$:/plugins/ruivieira/devthing/issue-children.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/issue-children.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ruivieira/devthing/issue-children.js\ntype: application/javascript\nmodule-type: macro\n\nGet all the children for this issue\n\n\\*/\n(function () {\n  /*jslint node: true, browser: true */\n  /*global $tw: false */\n  \&quot;use strict\&quot;;\n\n  /*\n    Information about this macro\n    */\n\n  exports.name = \&quot;issue-children\&quot;;\n\n  exports.params = [];\n\n  /*\n    Run the macro\n    */\n  exports.run = function (code) {\n    let filter = `[tag[issue]field:issue.parent[${code}]]`;\n    console.log(`Fetching children for filter ${filter}`);\n    const issues = $tw.wiki.filterTiddlers(filter);\n\n    let result = \&quot;\&quot;;\n\n    if (issues.length &gt; 0) {\n      result += \&quot;&lt;h3&gt;Sub-tasks&lt;/h3&gt;\\n\\n\&quot;;\n      result += \&quot;&lt;ul&gt;\&quot;;\n      result += issues.map((issue) =&gt; `&lt;li&gt;&lt;&lt;issue ${issue}&gt;&gt;&lt;/li&gt;`).join(\&quot;\\n\&quot;);\n      result += \&quot;&lt;/ul&gt;\&quot;;\n      return result;\n    } else {\n      return \&quot;\&quot;;\n    }\n  };\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;macro&quot;
+        },
         &quot;$:/plugins/ruivieira/devthing/issue.js&quot;: {
             &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/issue.js&quot;,
             &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ruivieira/devthing/issue.js\ntype: application/javascript\nmodule-type: macro\n\nLink to an issue\n\n\\*/\n(function () {\n  /*jslint node: true, browser: true */\n  /*global $tw: false */\n  \&quot;use strict\&quot;;\n\n  /*\n    Information about this macro\n    */\n\n  exports.name = \&quot;issue\&quot;;\n\n  exports.params = [{ name: \&quot;code\&quot; }];\n\n  /*\n    Run the macro\n    */\n  exports.run = function (code) {\n    let issue = $tw.wiki.getTiddler(code);\n    let status = issue.fields[\&quot;issue.status\&quot;];\n    let description = issue.fields[\&quot;issue.description\&quot;];\n\n    let wiki_link =\n      description != undefined\n        ? `[[[${code}] ${description}|${code}]]`\n        : `[[${code}]]`;\n\n    if (status != undefined) {\n      if (status == \&quot;done\&quot;) {\n        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/full}} ~~${wiki_link}~~`;\n      } else {\n        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/half}} ${wiki_link}`;\n      }\n    }\n    return wiki_link;\n  };\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;macro&quot;
+        },
+        &quot;$:/plugins/ruivieira/devthing/line-up.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/line-up.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ruivieira/devthing/line-up.js\ntype: application/javascript\nmodule-type: macro\n\nGet the task line-up\n\n\\*/\n(function () {\n  /*jslint node: true, browser: true */\n  /*global $tw: false */\n  \&quot;use strict\&quot;;\n\n  /*\n    Information about this macro\n    */\n\n  exports.name = \&quot;line-up\&quot;;\n\n  exports.params = [];\n\n  /*\n    Run the macro\n    */\n  exports.run = function () {\n    let filter = `[tag[issue]tag[line-up]]`;\n\n    const issues = $tw.wiki.filterTiddlers(filter);\n\n    if (issues.length &gt; 0) {\n      return issues.map((issue) =&gt; `* &lt;&lt;issue ${issue}&gt;&gt;`).join(\&quot;\\n\&quot;);\n    } else {\n      return \&quot;No tasks lined up.\&quot;;\n    }\n  };\n})();\n&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;macro&quot;
         },
@@ -10190,7 +10217,7 @@ Error message and password prompt
             &quot;title&quot;: &quot;$:/themes/ruivieira/devthing/base&quot;,
             &quot;tags&quot;: &quot;[[$:/tags/Stylesheet]]&quot;,
             &quot;list-after&quot;: &quot;$:/themes/tiddlywiki/vanilla/base&quot;,
-            &quot;text&quot;: &quot;html, body {\n    font-family: 'ubuntu_monoregular', monospace;\n}\n\na.tc-tiddlylink,\na.tc-tiddlylink-external,\na.tc-tiddlylink-external:visited {\n    color: #ca6700;\n    background: rgb(240, 240, 240);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\na.tc-tiddlylink:hover,\na.tc-tiddlylink-external:hover,\na.tc-tiddlylink-external:visited:hover {\n    color: white !important;\n    background: #ca6700;\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\n.tc-tiddler-frame .tc-tiddler-body {\n    font-size: 0.8rem;\n    line-height: 22px;\n}\n\n\nbutton.tc-tag-label, span.tc-tag-label {\n    display: inline-block;\n    padding: 0.3em 0.7em 0.3rem 0.7em;\n    font-size: 0.7em;\n    font-weight: 400;\n    line-height: 1.2em;\n    color: #ffffff;\n    white-space: nowrap;\n    vertical-align: baseline;\n    background-color: #ffecb4;\n    border-radius: 0.35em;\n}\n\na.tc-tiddlylink-external::before {\n    content: \&quot;\\2615 \&quot;;\n}\n\nmark {\n    background: rgb(83%, 100%, 64%);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\ncode, pre {\n    color: rgb(100, 100, 100);\n    background: rgb(240, 240, 240);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n    font-family: 'ubuntu_monoregular', monospace;\n    font-size: 0.8rem;\n}&quot;
+            &quot;text&quot;: &quot;html, body {\n    font-family: 'ubuntu_monoregular', monospace;\n}\n\na.tc-tiddlylink,\na.tc-tiddlylink-external,\na.tc-tiddlylink-external:visited {\n    color: #ca6700;\n    background: rgb(240, 240, 240);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\na.tc-tiddlylink:hover,\na.tc-tiddlylink-external:hover,\na.tc-tiddlylink-external:visited:hover {\n    color: white !important;\n    background: #ca6700;\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\n.tc-tiddler-frame .tc-tiddler-body {\n    font-size: 0.8rem;\n    line-height: 22px;\n}\n\n\nbutton.tc-tag-label, span.tc-tag-label {\n    display: inline-block;\n    padding: 0.3em 0.7em 0.3rem 0.7em;\n    font-size: 0.7em;\n    font-weight: 400;\n    line-height: 1.2em;\n    color: #ffffff;\n    white-space: nowrap;\n    vertical-align: baseline;\n    background-color: #ffecb4;\n    border-radius: 0.35em;\n}\n\na.tc-tiddlylink-external::before {\n    content: \&quot;\\2615 \&quot;;\n}\n\nmark {\n    background: rgb(83%, 100%, 64%);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n}\n\ncode, pre {\n    color: rgb(100, 100, 100);\n    background: rgb(240, 240, 240);\n    border-radius: 4px 4px 4px 4px;\n    padding: 2px 2px 2px 2px;\n    font-family: 'ubuntu_monoregular', monospace;\n    font-size: 0.8rem;\n}\n\n.issue-summary {\n    background: rgb(92%, 92%, 92%);\n    border-radius: 4px;\n    padding: 8px;\n    font-size:0.8rem;\n}&quot;
         },
         &quot;$:/plugins/ruivieira/devthing/ui/Actions/new-issue&quot;: {
             &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/ui/Actions/new-issue&quot;,
@@ -10203,7 +10230,27 @@ Error message and password prompt
             &quot;caption&quot;: &quot;{{$:/core/images/new-button}} {{$:/language/Buttons/NewTiddler/Caption}}&quot;,
             &quot;description&quot;: &quot;{{$:/language/Buttons/NewTiddler/Hint}}&quot;,
             &quot;tags&quot;: &quot;$:/tags/PageControls&quot;,
-            &quot;text&quot;: &quot;\\whitespace trim\n&lt;$button actions={{$:/plugins/ruivieira/devthing/ui/Actions/new-issue}} tooltip={{$:/language/Buttons/NewTiddler/Hint}} aria-label={{$:/language/Buttons/NewTiddler/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]\&quot;&gt;\n{{$:/plugins/ruivieira/devthing/images/bug}}\n&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]\&quot;&gt;\n&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/language/Buttons/NewTiddler/Caption}}/&gt;&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$button&gt;\n&quot;
+            &quot;text&quot;: &quot;\\whitespace trim\n&lt;$button actions={{$:/plugins/ruivieira/devthing/ui/Actions/new-issue}} tooltip={{$:/language/Buttons/NewTiddler/Hint}} aria-label={{$:/language/Buttons/NewTiddler/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]\&quot;&gt;\n{{$:/plugins/ruivieira/devthing/images/bug}}\n&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]\&quot;&gt;\n&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/plugins/ruivieira/devthing/ui/templates/new-issue}}/&gt;&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$button&gt;\n&quot;
+        },
+        &quot;$:/plugins/ruivieira/devthing/ui/SideBar/LineUpSideBar&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/ui/SideBar/LineUpSideBar&quot;,
+            &quot;caption&quot;: &quot;Line-up&quot;,
+            &quot;description&quot;: &quot;Task line-up&quot;,
+            &quot;tags&quot;: &quot;$:/tags/SideBar&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/SideBar/Open&quot;,
+            &quot;text&quot;: &quot;&lt;&lt;line-up&gt;&gt;\n&quot;
+        },
+        &quot;$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplateChildren&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplateChildren&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ViewTemplate&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/ViewTemplate/body&quot;,
+            &quot;text&quot;: &quot;&lt;$macrocall $name=\&quot;issue-children\&quot; code={{!!title}}/&gt;\n&quot;
+        },
+        &quot;$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplateSummary&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplateSummary&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ViewTemplate&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/ViewTemplate/tags&quot;,
+            &quot;text&quot;: &quot;&lt;$list filter=\&quot;[all[current]tag[issue]]\&quot;&gt;\n&lt;div class=\&quot;issue-summary tc-tiddler-body\&quot;&gt;\n\&quot;\&quot;\&quot;\n''Project'': &lt;$select field='issue.project'&gt;&lt;$list filter='[tag[project]]'&gt;&lt;option&gt;&lt;$view field='title'/&gt;&lt;/option&gt;&lt;/$list&gt;&lt;/$select&gt;\n''Status'': &lt;$select field='issue.status'&gt;\n&lt;option value='ongoing'&gt;ongoing&lt;/option&gt;\n&lt;option value='done'&gt;done&lt;/option&gt;&lt;/$select&gt;\n\&quot;\&quot;\&quot;\n&lt;/div&gt;\n&lt;div class=\&quot;tc-tiddler-body\&quot;&gt;\n&lt;h2&gt;Description&lt;/h2&gt;\n\n{{!!issue.description}}\n&lt;/div&gt;\n&lt;/$list&gt;&quot;
         },
         &quot;$:/plugins/ruivieira/devthing/ui/templates/new-issue&quot;: {
             &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/ui/templates/new-issue&quot;,
@@ -10211,8 +10258,7 @@ Error message and password prompt
             &quot;issue.description&quot;: &quot;A brand new issue&quot;,
             &quot;issue.project&quot;: &quot;&quot;,
             &quot;issue.status&quot;: &quot;ongoing&quot;,
-            &quot;tags&quot;: &quot;issue&quot;,
-            &quot;text&quot;: &quot;A brand new issue.&quot;
+            &quot;tags&quot;: &quot;issue&quot;
         },
         &quot;$:/plugins/ruivieira/devthing/images/bug&quot;: {
             &quot;title&quot;: &quot;$:/plugins/ruivieira/devthing/images/bug&quot;,
@@ -10252,7 +10298,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[DevThing core]] Issues Projects" title="$:/StoryList">
+<div list="README [[DevThing core]] Issues Projects" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23-prerelease">
@@ -10373,22 +10419,43 @@ Error message and password prompt
 
 &lt;&lt;project-issues &quot;DevThing core&quot; &quot;open&quot;&gt;&gt;</pre>
 </div>
-<div issue.date.due="2020-12-07" issue.description="This an example of a completed issue" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-1">
-<pre>This an example of a completed issue.</pre>
+<div issue.date.due="2020-12-07" issue.description="This an example of a completed issue" issue.parent="ISSUE-2" issue.project="DevThing core" issue.status="done" tags="issue line-up" title="ISSUE-1">
+<pre></pre>
 </div>
 <div issue.description="Create issues from template" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-10">
-<pre>Create issues from template.
-
-Implemented in `v0.0.2`.
+<pre>Implemented in `v0.0.2`.
 New issues can be created using the edit button [[$:/plugins/ruivieira/devthing/ui/Buttons/new-issue]].</pre>
 </div>
-<div issue.date.due="2020-12-01" issue.description="Example of ongoing issue" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-2">
-<pre>Example of ongoing issue</pre>
+<div issue.description="Implement task priorities" issue.project="DevThing core" issue.status="ongoing" tags="issue line-up" title="ISSUE-11">
+<pre></pre>
 </div>
-<div issue.description="Use a `issue.description` field to identify issues, rather that `title`" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-3">
-<pre>Use a `issue.description` field to identify issues, rather that `title`.
+<div issue.description="Ability to link git commit hashes" issue.project="DevThing core" issue.status="ongoing" tags="issue line-up" title="ISSUE-12">
+<pre></pre>
+</div>
+<div issue.description="Support sub-projects" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-13">
+<pre></pre>
+</div>
+<div issue.description="Add support for sub-tasks" issue.project="DevThing core" issue.status="done" tags="issue line-up" title="ISSUE-14">
+<pre>This was implemented in `v0.0.3`.
 
-The issue's title should be simple enough to reference in a macro field,
+[[README]] has an example, as well as [[ISSUE-2]].</pre>
+</div>
+<div issue.description="Change issue project from tiddle" issue.project="DevThing core" issue.status="done" tags="issue line-up" title="ISSUE-15">
+<pre>Implemented in `v0.0.3`.
+
+&quot;&quot;&quot;
+Issue tiddles now include a summary box via this [[ViewTemplate|$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplate]].
+This implements a select box listing all available issues and allowing to select a new project for the issue.
+&quot;&quot;&quot;</pre>
+</div>
+<div issue.description="Add support for syntax highlighting" issue.parent="ISSUE-15" issue.project="DevThing core" issue.status="ongoing" tags="issue line-up" title="ISSUE-16">
+<pre></pre>
+</div>
+<div issue.date.due="2020-12-01" issue.description="Example of ongoing issue" issue.project="DevThing core" issue.status="ongoing" tags="issue line-up" title="ISSUE-2">
+<pre></pre>
+</div>
+<div issue.description="Use a `issue.description` field to identify issues, rather than `title`" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-3">
+<pre>The issue's title should be simple enough to reference in a macro field,
 `&lt;&lt;issue &quot;id&quot;&gt;&gt;`, but the description should be informative.
 
 Ideally the behavious should be:
@@ -10401,23 +10468,23 @@ which would render
 
 &lt;&lt;issue &quot;ISSUE-3&quot;&gt;&gt;</pre>
 </div>
-<div issue.description="Add due dates to issues" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-4">
-<pre>Add a due date field to issues.
+<div issue.description="Add due dates to issues" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-4">
+<pre>This date should be used for timelines as well as future macros to
+display issue grouped by date (overdue, etc..)
 
-This date should be used for timelines as well as future macros to
-display issue grouped by date (overdue, etc..)</pre>
+This is implemented in `v0.0.2` and can be specified using the field
+
+```
+issue.date.due
+```</pre>
 </div>
 <div issue.description="Add project timeline visualisation" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-5">
-<pre>Add project timeline visualisation.
-
-This was implemented in `v0.0.2`.
+<pre>This was implemented in `v0.0.2`.
 
 Documentation availabe in [[Projects]].</pre>
 </div>
 <div issue.description="Ability to hide completed issues from listing" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-6">
-<pre>Ability to hide completed issues from listing.
-
-This can be specified in the macro as:
+<pre>This can be specified in the macro as:
 
 ```
 &lt;&lt;project-issues &quot;project&quot; &quot;open&quot;&gt;&gt;
@@ -10425,14 +10492,19 @@ This can be specified in the macro as:
 
 This was done in `v0.0.2`.</pre>
 </div>
-<div issue.description="Add support for a line-up" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-7">
-<pre>Add support for a line-up.</pre>
+<div issue.description="Add support for a line-up" issue.project="DevThing core" issue.status="done" tags="issue" title="ISSUE-7">
+<pre>This was added in `v.0.0.3`.
+This implements a macro called `&lt;&lt;line-up&gt;&gt;` which displays a
+list of tasks/issues tagged with `line-up`.
+
+It also adds a tab on the sidebar (next to `Open`) which displays the
+same list.</pre>
 </div>
 <div issue.description="Add support for issue priority" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-8">
-<pre>Add support for issue priority.</pre>
+<pre></pre>
 </div>
 <div issue.description="Add backlink maps" issue.project="DevThing core" issue.status="ongoing" tags="issue" title="ISSUE-9">
-<pre>Add backlink maps.</pre>
+<pre></pre>
 </div>
 <div title="Issues">
 <pre>To create an issue, simply create a tiddle and tag it
@@ -10450,7 +10522,7 @@ Issue specific fields are:
 * `issue.project` - attach this issue to a project, idetified by its `title`
 * `issue.date.*` - date information for this issue
 ** `issue.date.due` - the issue's due date
-
+* `issue.parent` - specifies the parent of this issue
 !! Macros
 
 !!! Single issue
@@ -10509,6 +10581,53 @@ project. For instance,
 will render
 
 &lt;&lt;project-issues-timeline &quot;DevThing core&quot;&gt;&gt;</pre>
+</div>
+<div title="README">
+<pre>!! Welcome to `DevThing`
+
+&quot;&quot;&quot;
+`DevThing` is an open source project manager for software development.
+It runs 100% on client-side, consisting of a ''single HTML file''.
+
+Simply open it, use it and then download the HTML file containing all your new work.
+Source code is available at https://git.sr.ht/~ruivieira/devthing.
+
+The documentation ''is'' the demo.
+&quot;&quot;&quot;
+
+!! Projects
+
+More information in [[Projects]].
+
+!! Issues
+
+!!! Parent issues
+
+[[Issues]] can have sub-issues and parents.
+To define it as a sub-issue, define the `issue.parent` field.
+As an example you can see [[ISSUE-2]], which is the parent of [[ISSUE-1]].
+There is no limit to the nesting level and issues from different projects can be linked.
+
+
+More information in [[Issues]].
+
+!! Line-up
+
+You can add [[Issues]] to a line-up simply by tagging them with `line-up`.
+The current line-up can then be checked in two ways.
+
+Either by embedding the line-up anywhere by using the `line-up` macro:
+
+```
+&lt;&lt;line-up&gt;&gt;
+```
+
+which will, in this instance, show:
+
+&lt;&lt;line-up&gt;&gt;
+
+Or by looking at the //Line-up// tab in the side bar (next to //Open//)
+</pre>
 </div>
 
 

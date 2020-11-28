@@ -1,0 +1,19 @@
+tags: $:/tags/ViewTemplate
+title: $:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplateSummary
+list-after: $:/core/ui/ViewTemplate/tags
+
+<$list filter="[all[current]tag[issue]]">
+<div class="issue-summary tc-tiddler-body">
+"""
+''Project'': <$select field='issue.project'><$list filter='[tag[project]]'><option><$view field='title'/></option></$list></$select>
+''Status'': <$select field='issue.status'>
+<option value='ongoing'>ongoing</option>
+<option value='done'>done</option></$select>
+"""
+</div>
+<div class="tc-tiddler-body">
+<h2>Description</h2>
+
+{{!!issue.description}}
+</div>
+</$list>

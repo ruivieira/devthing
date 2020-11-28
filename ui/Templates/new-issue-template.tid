@@ -4,5 +4,3 @@ issue.project:
 issue.status: ongoing
 tags: issue
 title: $:/plugins/ruivieira/devthing/ui/templates/new-issue
-
-A brand new issue.
