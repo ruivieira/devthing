@@ -88,3 +88,11 @@ table th, table td {
 ul.macro-listing {
     list-style-type:none;
 }
+
+.icon-black {
+    fill: black;
+}
+
+.icon-faded {
+    fill: rgb(150%, 150%, 150%);
+}

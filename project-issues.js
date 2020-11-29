@@ -31,7 +31,6 @@ Link to an issue
       filter += " +[field:issue.status[done]]";
     }
 
-    console.log(filter);
     const issues = $tw.wiki.filterTiddlers(filter);
     let result = "<ul class='macro-listing'>";
     result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");
