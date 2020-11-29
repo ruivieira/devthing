@@ -28,7 +28,10 @@ Get the task line-up
     const issues = $tw.wiki.filterTiddlers(filter);
 
     if (issues.length > 0) {
-      return issues.map((issue) => `* <<issue ${issue}>>`).join("\n");
+      let result = "<ul class='macro-listing'>";
+      result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");
+      result += "</ul>";
+      return result;
     } else {
       return "No tasks lined up.";
     }

@@ -33,10 +33,25 @@ Link to an issue
         : `[[${code}]]`;
 
     if (status != undefined) {
-      if (status == "done") {
-        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/full}} ~~${wiki_link}~~`;
-      } else {
-        wiki_link = `{{$:/plugins/ruivieira/devthing/harvey/half}} ${wiki_link}`;
+      switch (status) {
+        case "todo":
+          wiki_link = `<<HB 5>> ${wiki_link}`;
+          break;
+        case "next":
+          wiki_link = `<<HB 8>> ${wiki_link}`;
+          break;
+        case "inprogress":
+          wiki_link = `<<HB 13>> ${wiki_link}`;
+          break;
+        case "onhold":
+          wiki_link = `{{$:/plugins/ruivieira/devthing/images/onhold}} ${wiki_link}`;
+          break;
+        case "review":
+          wiki_link = `<<HB 21>> ${wiki_link}`;
+          break;
+        case "done":
+          wiki_link = `<<HB 34>> ~~${wiki_link}~~`;
+          break;
       }
     }
     return wiki_link;

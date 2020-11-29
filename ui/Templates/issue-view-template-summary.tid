@@ -4,12 +4,23 @@ list-after: $:/core/ui/ViewTemplate/tags
 
 <$list filter="[all[current]tag[issue]]">
 <div class="issue-summary tc-tiddler-body">
-"""
-''Project'': <$select field='issue.project'><$list filter='[tag[project]]'><option><$view field='title'/></option></$list></$select>
-''Status'': <$select field='issue.status'>
-<option value='ongoing'>ongoing</option>
-<option value='done'>done</option></$select>
-"""
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <td>Project</td>
+  <td><$select field='issue.project'><$list filter='[tag[project]]'><option><$view field='title'/></option></$list></$select></td>
+</tr>
+<tr>
+  <td>Status</td>
+  <td><$select field='issue.status'>
+        <option value='todo'>todo</option>
+        <option value='next'>next</option>
+        <option value='inprogress'>inprogress</option>
+        <option value='onhold'>onhold</option>
+        <option value='review'>review</option>
+        <option value='done'>done</option>
+    </$select></td>
+</tr>
+</table>
 </div>
 <div class="tc-tiddler-body">
 <h2>Description</h2>

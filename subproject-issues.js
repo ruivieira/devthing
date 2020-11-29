@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ruivieira/devthing/project-issues.js
+title: $:/plugins/ruivieira/devthing/subproject-issues.js
 type: application/javascript
 module-type: macro
 
@@ -15,7 +15,7 @@ Link to an issue
     Information about this macro
     */
 
-  exports.name = "project-issues";
+  exports.name = "subproject-issues";
 
   exports.params = [{ name: "project" }, { name: "show", default: "open" }];
 
@@ -23,7 +23,7 @@ Link to an issue
     Run the macro
     */
   exports.run = function (project, show) {
-    let filter = `[tag[issue]field:issue.project[${project}]]`;
+    let filter = `[tag[issue]field:issue.subproject[${project}]]`;
 
     if (show == "open") {
       filter += " +[!field:issue.status[done]]";
@@ -31,7 +31,6 @@ Link to an issue
       filter += " +[field:issue.status[done]]";
     }
 
-    console.log(filter);
     const issues = $tw.wiki.filterTiddlers(filter);
     let result = "<ul class='macro-listing'>";
     result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");

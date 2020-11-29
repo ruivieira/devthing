@@ -65,6 +65,26 @@ code, pre {
 .issue-summary {
     background: rgb(92%, 92%, 92%);
     border-radius: 4px;
-    padding: 8px;
+    padding: 6px;
     font-size:0.8rem;
+}
+
+.issue-summary > table {
+    border: none;
+    margin: 0px;
+    border-top: none;
+    border-left: none;
+}
+
+table th, table td {
+    border-top: none;
+    border-left: none;
+}
+
+.issue-summary > table > tr > td > select {
+    width: 100%;
+}
+
+ul.macro-listing {
+    list-style-type:none;
 }
