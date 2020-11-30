@@ -31,15 +31,18 @@ Link to an issue
     results += sprints
       .map((sprint) => {
         const tiddle = $tw.wiki.getTiddler(sprint);
-        const isBetween = moment().isBetween(
-          tiddle.fields["sprint.start"],
-          tiddle.fields["sprint.end"],
-          "day",
-          "[]"
-        );
+        const start = tiddle.fields["sprint.start"];
+        const end = tiddle.fields["sprint.end"];
+        const isBetween = moment().isBetween(start, end, "day", "[]");
 
         let colour = isBetween ? "black" : "faded";
-        return `<li>{{$:/plugins/ruivieira/devthing/images/sprint-${colour}}} [[${sprint}]]</li>`;
+        let dates = `${moment(start, "YYYY-MM-DD").format(
+          "Do MMM YYYY"
+        )} to ${moment(end, "YYYY-MM-DD").format("Do MMM YYYY")}`;
+        if (isBetween) {
+          dates += ` (${moment().diff(end, "days")} left)`;
+        }
+        return `<li>{{$:/plugins/ruivieira/devthing/images/sprint-${colour}}} [[${sprint}]] ${dates}</li>`;
       })
       .join("\n");
     results += "</ul>";

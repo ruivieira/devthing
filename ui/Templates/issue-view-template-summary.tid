@@ -8,6 +8,8 @@ list-after: $:/core/ui/ViewTemplate/tags
 <tr>
   <td>Project</td>
   <td><$select field='issue.project'><$list filter='[tag[project]]'><option><$view field='title'/></option></$list></$select></td>
+  <td>Subproject</td>
+  <td><$select field='issue.subproject'><$list filter='[tag[subproject]]'><option><$view field='title'/></option></$list></$select></td>
 </tr>
 <tr>
   <td>Status</td>
@@ -19,6 +21,9 @@ list-after: $:/core/ui/ViewTemplate/tags
         <option value='review'>review</option>
         <option value='done'>done</option>
     </$select></td>
+  <td>Sprint</td>
+  <td><$select field='issue.sprint'><$list filter='[tag[sprint]]'><option><$view field='title'/></option></$list></$select></td>
+
 </tr>
 </table>
 </div>

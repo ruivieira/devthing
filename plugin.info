@@ -2,7 +2,7 @@
     "title": "$:/plugins/ruivieira/devthing",
     "description": "DevThing project manager",
     "author": "Rui Vieira",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "core-version": ">=5.0.8",
     "source": "https://github.com/ruivieira/devthing",
     "plugin-type": "plugin",
