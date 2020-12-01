@@ -55,13 +55,13 @@ Link to an issue
     }
 
     const tasks = $tw.wiki.filterTiddlers(filter);
-    let result = "<ul class='macro-listing'>";
+    let result = `<div class='tree'><p class='tree'>{{$:/plugins/ruivieira/devthing/images/box}} [[${project}]]</p><ul class='macro-listing tree'>`;
     result += tasks
       .map((task) => {
         return render_task(task);
       })
       .join("\n");
-    result += "</ul>";
+    result += "</ul></div>";
     return result;
   };
 })();

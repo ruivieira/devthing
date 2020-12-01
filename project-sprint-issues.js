@@ -36,9 +36,9 @@ Lists issues in a sprint
     }
 
     const issues = $tw.wiki.filterTiddlers(filter);
-    let result = "<ul class='macro-listing'>";
+    let result = `<div class='tree'><p class='tree'>{{$:/plugins/ruivieira/devthing/images/sprint-black}} [[${sprint}]]</p><ul class='macro-listing tree'>`;
     result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");
-    result += "</ul>";
+    result += "</ul></div>";
     return result;
   };
 })();

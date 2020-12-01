@@ -19,6 +19,8 @@ Link to an issue
 
   exports.params = [{ name: "project" }, { name: "show", default: "open" }];
 
+  var utils = require("$:/plugins/ruivieira/devthing/utils.js");
+
   /*
     Run the macro
     */
@@ -31,7 +33,8 @@ Link to an issue
       filter += " +[field:issue.status[done]]";
     }
 
-    const issues = $tw.wiki.filterTiddlers(filter);
+    const issues = $tw.wiki.filterTiddlers(filter).sort(utils.naturalSort);
+
     let result = "<ul class='macro-listing'>";
     result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");
     result += "</ul>";

@@ -27,14 +27,14 @@ Link to an issue
 
     const subprojects = $tw.wiki.filterTiddlers(filter);
 
-    let result = "<ul class='macro-listing'>";
+    let result = `<div class='tree'><p class='tree'>{{$:/plugins/ruivieira/devthing/images/box}} [[${project}]]</p><ul class='macro-listing tree'>`;
     result += subprojects
       .map(
         (sp) =>
           `<li>{{$:/plugins/ruivieira/devthing/images/subproject}} [[${sp}]]</li>`
       )
       .join("\n");
-    result += "</ul>";
+    result += "</ul></div>";
     return result;
   };
 })();

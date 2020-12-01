@@ -2,10 +2,6 @@ title: $:/themes/ruivieira/devthing/base
 tags: [[$:/tags/Stylesheet]]
 list-after: $:/themes/tiddlywiki/vanilla/base
 
-html, body {
-    font-family: 'ubuntu_monoregular', monospace;
-}
-
 a.tc-tiddlylink,
 a.tc-tiddlylink-external,
 a.tc-tiddlylink-external:visited {
