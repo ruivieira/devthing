@@ -2,6 +2,10 @@ title: $:/themes/ruivieira/devthing/base
 tags: [[$:/tags/Stylesheet]]
 list-after: $:/themes/tiddlywiki/vanilla/base
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
 a.tc-tiddlylink,
 a.tc-tiddlylink-external,
 a.tc-tiddlylink-external:visited {
@@ -91,4 +95,12 @@ ul.macro-listing {
 
 .icon-faded {
     fill: rgb(150%, 150%, 150%);
+}
+
+.date-pill {
+    background: #ca6700;
+    border-radius: 4px 4px 4px 4px;
+    margin: 2px;
+    padding: 2px;
+    color: white;
 }

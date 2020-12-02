@@ -4,4 +4,4 @@ tags: $:/tags/SideBar
 title: $:/plugins/ruivieira/devthing/ui/SideBar/ProjectsSideBar
 list-after: $:/plugins/ruivieira/devthing/ui/SideBar/LineUpSideBar
 
-<<projects>>
+<<projects-issues-all "open">>

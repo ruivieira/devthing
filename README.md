@@ -23,3 +23,5 @@ The documentation **is** the demo.
 * Tasks
 * Syntax highlighting
 * Diagrams
+* Vim key bindings
+* Agenda

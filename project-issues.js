@@ -35,9 +35,9 @@ Link to an issue
 
     const issues = $tw.wiki.filterTiddlers(filter).sort(utils.naturalSort);
 
-    let result = "<ul class='macro-listing'>";
+    let result = `<div class='tree'><p class='tree'>{{$:/plugins/ruivieira/devthing/images/box}}  [[${project}]]</p><ul class='macro-listing tree'>`;
     result += issues.map((issue) => `<li><<issue ${issue}>></li>`).join("\n");
-    result += "</ul>";
+    result += "</ul></div>";
     return result;
   };
 })();
