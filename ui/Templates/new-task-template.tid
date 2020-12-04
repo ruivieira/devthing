@@ -1,0 +1,5 @@
+task.date.due: 
+task.project: 
+task.status: open
+tags: task
+title: $:/plugins/ruivieira/devthing/ui/templates/new-task

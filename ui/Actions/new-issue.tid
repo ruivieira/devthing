@@ -1,0 +1,12 @@
+description: create a new empty issue
+tags: $:/tags/Actions
+title: $:/plugins/ruivieira/devthing/ui/Actions/new-issue
+
+<$action-sendmessage $message="tm-new-tiddler" 
+    tags="issue" 
+    title="ISSUE-" 
+    issue.description="A brand new issue"
+    issue.status="ongoing"
+    issue.project=""
+    $template={{$:/plugins/ruivieira/devthing/ui/templates/new-issue}}/>
+

@@ -21,14 +21,14 @@ Generate an agenda
 
   var moment = require("$:/plugins/kixam/moment/moment.js");
 
-  let groupStatus = function (filter, field) {
+  let groupStatus = function (filter, dateField) {
     let today = [];
     let overdue = [];
     let future = [];
 
     $tw.wiki.filterTiddlers(filter).map((title) => {
       const tiddler = $tw.wiki.getTiddler(title);
-      const due_date = tiddler.fields[field];
+      const due_date = tiddler.fields[dateField];
       if (due_date != undefined) {
         const days_diff = moment().diff(moment(due_date, "YYYY-MM-DD"), "days");
         if (days_diff == 0) {
@@ -42,6 +42,10 @@ Generate an agenda
     });
 
     return { today: today, overdue: overdue, future: future };
+  };
+
+  let formatDate = function (tiddler, dateField) {
+    return moment(tiddler.fields[dateField], "YYYY-MM-DD").format("Do MMM");
   };
 
   /*
@@ -63,20 +67,22 @@ Generate an agenda
           (issue) =>
             `* [[[${issue.fields["title"]}] - ${
               issue.fields["issue.description"]
-            }|${issue.fields["title"]}]] <span class="date-pill">${moment(
-              issue.fields["issue.date.due"],
-              "YYYY-MM-DD"
-            ).format("Do MMM")}</span>`
+            }|${issue.fields["title"]}]] <span class="date-pill">${formatDate(
+              issue,
+              "issue.date.due"
+            )}</span>`
         )
         .join("\n");
       html += "\n";
       html += tasks.overdue
         .map(
           (issue) =>
-            `* [[${issue.fields["title"]}]] <span class="date-pill">${moment(
-              issue.fields["task.date.due"],
-              "YYYY-MM-DD"
-            ).format("Do MMM")}</span>`
+            `* [[${
+              issue.fields["title"]
+            }]] <span class="date-pill">${formatDate(
+              issue,
+              "task.date.due"
+            )}}</span>`
         )
         .join("\n");
       html += "\n";
@@ -105,20 +111,22 @@ Generate an agenda
           (issue) =>
             `* [[[${issue.fields["title"]}] - ${
               issue.fields["issue.description"]
-            }|${issue.fields["title"]}]] <span class="date-pill">${moment(
-              issue.fields["issue.date.due"],
-              "YYYY-MM-DD"
-            ).format("Do MMM")}</span>`
+            }|${issue.fields["title"]}]] <span class="date-pill">${formatDate(
+              issue,
+              "issue.date.due"
+            )}</span>`
         )
         .join("\n");
       html += "\n";
       html += tasks.future
         .map(
           (issue) =>
-            `* [[${issue.fields["title"]}]] <span class="date-pill">${moment(
-              issue.fields["task.date.due"],
-              "YYYY-MM-DD"
-            ).format("Do MMM")}</span>`
+            `* [[${
+              issue.fields["title"]
+            }]] <span class="date-pill">${formatDate(
+              issue,
+              "task.date.due"
+            )}</span>`
         )
         .join("\n");
 
