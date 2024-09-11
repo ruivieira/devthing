@@ -26,11 +26,30 @@ Link to an issue
     let issue = $tw.wiki.getTiddler(code);
     let status = issue.fields["issue.status"];
     let description = issue.fields["issue.description"];
+    let priority = issue.fields["issue.priority"]; // New priority field
 
     let wiki_link =
       description != undefined
         ? `[[[${code}] ${description}|${code}]]`
         : `[[${code}]]`;
+
+    // Add priority display
+    if (priority != undefined) {
+      switch (priority) {
+        case "low":
+          wiki_link = `{{$:/plugins/ruivieira/devthing/images/priority-low}} ${wiki_link}`;
+          break;
+        case "medium":
+          wiki_link = `{{$:/plugins/ruivieira/devthing/images/priority-medium}} ${wiki_link}`;
+          break;
+        case "high":
+          wiki_link = `{{$:/plugins/ruivieira/devthing/images/priority-high}} ${wiki_link}`;
+          break;
+        case "critical":
+          wiki_link = `{{$:/plugins/ruivieira/devthing/images/priority-critical}} ${wiki_link}`;
+          break;
+      }
+    }
 
     if (status != undefined) {
       switch (status) {
@@ -54,6 +73,9 @@ Link to an issue
           break;
       }
     }
+
+
+
     return wiki_link;
   };
 })();
