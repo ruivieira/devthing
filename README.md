@@ -8,9 +8,9 @@ It runs 100% on the browser, no server needed, consisting of a **single HTML fil
 
 `DevThing` development is done in `DevThing` itself.
 
-A live demo can be found at https://ruivieira.github.io/devthing/.
+A live demo can be found at https://ruivieira.srht.site/devthing/.
 
-The documentation **is** the demo.
+The documentation <u>**is**</u> the demo.
 
 ## Features
 
