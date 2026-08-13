@@ -1,0 +1,10 @@
+created: 20201129191319973
+modified: 20201129191319973
+project: DevThing core
+subproject.description: DevThing UI
+tags: subproject
+title: SubProjectUI
+
+!! Ongoing issues
+
+<<subproject-issues "SubProjectUI" "open">>

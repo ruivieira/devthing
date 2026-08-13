@@ -1,0 +1,28 @@
+tags: $:/tags/ViewTemplate
+title: $:/plugins/ruivieira/devthing/ui/templates/ProjectViewTemplateSummary
+list-after: $:/core/ui/ViewTemplate/tags
+
+<$list filter="[all[current]tag[project]]">
+<div class="tc-tiddler-body">
+<$button>
+<$action-sendmessage $message="tm-new-tiddler" 
+    tags="issue" 
+    title="ISSUE-" 
+    issue.description="A brand new issue"
+    issue.status="todo"
+    issue.project={{!!title}}
+    $template={{$:/plugins/ruivieira/devthing/ui/templates/new-issue}}/>
+New issue {{$:/plugins/ruivieira/devthing/images/bug}}
+</$button>
+<$button>
+<$action-sendmessage $message="tm-new-tiddler" 
+    tags="task" 
+    title="TASK-" 
+    task.date.due=""
+    task.status="todo"
+    task.project={{!!title}}
+    $template={{$:/plugins/ruivieira/devthing/ui/templates/new-task}}/>
+New task {{$:/core/images/done-button}}
+</$button>
+</div>
+</$list>

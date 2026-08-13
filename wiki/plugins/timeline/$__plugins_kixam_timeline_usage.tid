@@ -1,0 +1,93 @@
+title: $:/plugins/kixam/timeline/usage
+
+\define createSaveCloseTiddler(title,text)
+<$action-sendmessage $message="tm-new-tiddler" title="$title$" text="$text$" />
+<$action-sendmessage $message="tm-save-tiddler" $param="Draft of '$title$'" />
+<$action-sendmessage $message="tm-close-tiddler" $param="$title$" />
+\end
+
+\define demoTiddlerContents(option)
+Value for option ''$option$'' : <$edit-text tag=input tiddler='$(optionValueTiddler)$'/>
+
+!!Result
+<$visjstimeline $option$={{$(optionValueTiddler)$}} />
+\end
+
+\define tryit(option,value:"")
+<$set name=optionValueTiddler value="$:/temp/plugins/kixam/visjstimeline-demo-option-$option$">
+<$set name=optionDemoTiddler value="Testing option '$option$'">
+<$button>
+<$macrocall $name=createSaveCloseTiddler title=<<optionValueTiddler>> text="$value$" />
+<$macrocall $name=createSaveCloseTiddler title=<<optionDemoTiddler>> text=<<demoTiddlerContents "$option$">> />
+<$action-navigate $to=<<optionDemoTiddler>> />
+Try it!
+</$button>
+</$set>
+</$set>
+\end
+
+!Introduction
+
+This project is a direct continuation of [[emkay's plugin|https://github.com/emkayonline/tw5visjs]].
+
+The `<$visjstimeline>` widget shows a set of tiddlers on a graphical timeline. The timeline is interactive and dynamic, and can be zoomed and moved around by dragging.
+
+!Content and Attributes
+
+A list of tiddlers is specified using a filter.
+
+Each matching tiddler is shown on the timeline using its specified start date and, if provided, end date fields. The start date defaults to the 'created' field.
+
+!! Valid date format on tiddlers
+* By default dates are parsed using the [[TiddlyWiki|http://tiddlywiki.com/#TiddlyWiki]] date parser (which will handle the `created` and `modified` fields)
+* An override date format can be specified.
+* This format will apply to both the start and end dates, `customTime`, as well as `timeline.start` and `timeline.end` fields if set manually.
+* Additionally the start date or end date field on a tiddler, or the `customTime` attribute, can be set to the word `now`: this will set the date in the timeline to the date at the time the timeline is displayed.
+* Finally, any date field can use `moment`'s [[relative date calculation functions|http://momentjs.com/docs/#/manipulating/add/]] `add` or `subtract`, overloading the provided format. For instance, if `persistent` option is used, one can manually set `timeline.start` field to `moment().subtract(2,days)`, which will result in the timeline start date to be 2 days before 'now', that is 2 days before the date when the timeline is rendered. The syntax `moment(2015-10-14).add(1,days)` would compute into one day after Wednesday, 14th October, 2015, that is, Thursday, 15th. In this particular case, it is advised to set `vis.js` option `moveable` to `false`, see this plugin's `config` option.
+
+!! Relevant tiddler fields
+|!Field|!Interpretation|
+| `caption` |Used to represent the tiddler instead of the `title`.|
+| `description` |Used instead of `caption` or `title` to render description text when mouse hovers over the item.|
+| `icon` |Link to a image tiddler that will be used as the item's icon.|
+| `color` |Used to render the corresponding item or group on the timeline.|
+| `timeline.start` and `timeline.end` |If the `persistent` attribute is present, used to initialize the start and end of the contained timeline x-axis, respectively. When in use, `persistent` option will use a temporary tiddler at `$:/temp/plugins/kixam/visjstimeline/persistent/<titleOfTiddlerContainingTimeline>`. Note that, if `vis.js` option `moveable` is set to `true`, which is the default, these fields at the temporary tiddler will be silently overwritten by this plugin whenever the user zooms or moves the timeline. You can also change them manually.|
+
+!! Attributes
+
+All attributes are optional.
+
+|!Attribute|!Description|!Default value|! |
+| `filter` |The [[TiddlerFilter|http://tiddlywiki.com/#Filters]] used to generate the list of tiddlers to display.|`!is[system]`|<<tryit filter "[all[tiddlers]tag[Group A]]">>|
+| `startDateField` |A field on each tiddler that defines the start date of a tiddler in the timeline.|`created`|<<tryit startDateField modified>>|
+| `endDateField` |A field on each tiddler that defines the end date of a tiddler in the timeline.|//undefined//|<<tryit endDateField created>>|
+| `format` |The format for parsing the dates, using the moment.js [[Parse string+format|http://momentjs.com/docs/#/parsing/string-format/]]. If unset, uses [[TW5 date format|http://tiddlywiki.com/#DateFormat]].|//undefined//||
+| `tipFormat` |If present, the date format used to display the starting and ending dates in the tooltip boxes when mouse gets over an item. If unset, the dates are not displayed|//undefined//|<<tryit tipFormat "YYYY-MM-DD HH:mm:ss">>|
+| `groupField` |A field whose value will be used to group tiddlers on the timeline.|//undefined//|<<tryit groupField color>>|
+| `customTime` |A date at which a vertical bar will be shown on the timeline. Affected by `format`. It can be moved by the user, but the new position will not be saved.|//undefined//|<<tryit customTime "20150619">>|
+| `groupTags` |If `groupField` field is not used and if a filtered tiddler has a tag among the given [[Title List|http://tiddlywiki.com/#Title%20List]], this tag will be used as the item's group.|//undefined//|<<tryit groupTags "[[Group A]]">>|
+| `boxing` |If set to `static`, the containing box will be static. If set to `auto`, the timeline will dynamically adjust its height to the items to show.|`static`|<<tryit boxing auto>>|
+| `navpad` |If set, a navpad will be shown.|//undefined//|<<tryit navpad>>|
+| `config` |Title of a tiddler which contains configuration options for the timeline in [[JSON format|http://tiddlywiki.com/#JSONTiddlers]], as per [[vis.js documentation|https://visjs.github.io/vis-timeline/docs/timeline/#Configuration_Options]].|//undefined//||
+| `persistent` |If set, the x-axis range will become persistent. Uses (creates, if needed) 2 fields of the tiddler containing the timeline, namely `timeline.start` and `timeline.end`.|//undefined//|<<tryit persistent>>|
+
+!!!Notes about the `config` attribute
+* for the sake of integration, not all the options are available, please see [[the whitelist|$:/plugins/kixam/timeline/validOptions]];
+* the `navpad` is not affected by options passed through this mechanism, except for these listed below the `whitelist` under the name `navbarReactOptions`;
+* if you create or change options in your config tiddler after the timeline was drawn, you may need to have it redrawn, e.g. by editing/canceling the tiddler containing the timeline, or by changing sidebar panel back and forth.
+
+!!!Notes about the `groupField` and `groupTags` attributes
+* if the `filter` finds tiddlers that cannot be grouped according to the criteria given by either of these attributes, these tiddlers will be shown in a dedicated generic group called `Global`
+* if a tiddler representing a tag is listed by the `groupTags` attribute and has any of the relevant tiddler fields listed in the previous section, they will be used to render the group in the group margin
+
+The content of the `<$visjstimeline>` widget is ignored.
+
+! Example Usage
+
+Show all non-system tiddlers, using their created date as the start date:
+
+`<$visjstimeline/>`
+
+Show all Tiddlers with a name starting 'Tiddler', using the born and died fields with a custom format:
+
+`<$visjstimeline filter="[prefix[Tiddler]]" startDateField="born" endDateField="died" format="YYYY MMM"/>`

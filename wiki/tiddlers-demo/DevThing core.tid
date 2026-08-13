@@ -1,0 +1,17 @@
+created: 20201129191319973
+modified: 20201129191319973
+tags: project
+title: DevThing core
+
+
+This is the project tiddle for the core `DevThing` development.
+
+<<project-issues-timeline "DevThing core">>
+
+!! Outstanding issues
+
+<<project-issues "DevThing core" "open">>
+
+!! Sub-projects
+
+<<project-subprojects "DevThing core">>

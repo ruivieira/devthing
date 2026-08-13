@@ -1,0 +1,6 @@
+issue.date.due: 2020-12-01
+issue.description: Example of on hold issue
+issue.project: DevThing core
+issue.status: onhold
+tags: issue
+title: ISSUE-2A

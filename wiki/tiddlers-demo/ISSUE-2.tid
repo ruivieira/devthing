@@ -1,0 +1,6 @@
+issue.date.due: 2020-12-01
+issue.description: Example of ongoing issue
+issue.project: DevThing core
+issue.status: inprogress
+tags: issue line-up
+title: ISSUE-2

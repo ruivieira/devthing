@@ -1,0 +1,13 @@
+issue.description: Change issue project from tiddle
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+tags: issue line-up
+title: ISSUE-15
+
+Implemented in `v0.0.3`.
+
+"""
+Issue tiddles now include a summary box via this [[ViewTemplate|$:/plugins/ruivieira/devthing/ui/templates/IssueViewTemplate]].
+This implements a select box listing all available issues and allowing to select a new project for the issue.
+"""

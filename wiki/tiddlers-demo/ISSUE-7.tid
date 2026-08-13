@@ -1,0 +1,13 @@
+issue.description: Add support for a line-up
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue
+title: ISSUE-7
+
+This was added in `v.0.0.3`.
+This implements a macro called `<<line-up>>` which displays a
+list of tasks/issues tagged with `line-up`.
+
+It also adds a tab on the sidebar (next to `Open`) which displays the
+same list.

@@ -1,0 +1,7 @@
+caption: Agenda
+description: Agenda
+tags: $:/tags/SideBar
+title: $:/plugins/ruivieira/devthing/ui/SideBar/AgendaSideBar
+list-after: $:/plugins/ruivieira/devthing/ui/SideBar/ProjectsSideBar
+
+<<agenda>>

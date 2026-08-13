@@ -1,0 +1,10 @@
+issue.description: Add project timeline visualisation
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+tags: issue
+title: ISSUE-5
+
+This was implemented in `v0.0.2`.
+
+Documentation availabe in [[Projects]].

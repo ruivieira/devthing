@@ -1,0 +1,10 @@
+issue.description: Remove bullets from macro listings
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+tags: issue
+title: ISSUE-18
+
+This is implemented in `v0.0.4`.
+All issue and sub-project listings now implement a `<ul>` directly with
+bullets removed with CSS.

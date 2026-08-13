@@ -1,0 +1,31 @@
+title: Issues
+
+To create an issue, simply create a tiddle and tag it
+with `issue`.
+
+Alternatively, press the issue button, [[$:/plugins/ruivieira/devthing/images/bug]], on the home toolbar.
+
+!! Fields
+
+Issue specific fields are:
+
+* `issue.status` - the current issue status. Some possible values are:
+** `done`
+** `ongoing`
+* `issue.project` - attach this issue to a project, idetified by its `title`
+* `issue.date.*` - date information for this issue
+** `issue.date.due` - the issue's due date
+* `issue.parent` - specifies the parent of this issue
+!! Macros
+
+!!! Single issue
+
+To insert a reference to an issue named `ISSUE-1`, simply add the macro
+
+```
+<<issue "ISSUE-1">>
+```
+
+This will create a link to the issue, for instance:
+
+<<issue "ISSUE-1">>

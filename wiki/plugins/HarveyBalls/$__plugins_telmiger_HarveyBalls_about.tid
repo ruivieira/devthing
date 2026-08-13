@@ -1,0 +1,14 @@
+created: 20200524083254663
+modified: 20200524083254663
+tags: 
+title: $:/plugins/telmiger/HarveyBalls/about
+
+<$list filter="0 1 2 3 4">
+<$macrocall $name="HB" nr=<<currentTiddler>>/>
+</$list>
+
+Round ideograms used for visual communication of qualitative information. – The set includes icons with titles and descriptions as well as handy macros for display. 
+
+<$list filter="5 8 13 21 34">
+<$macrocall $name="HB" nr=<<currentTiddler>>/>
+</$list>

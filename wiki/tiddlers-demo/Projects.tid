@@ -1,0 +1,45 @@
+title: Projects
+
+To create a project, simply create a tiddle and tag it
+with `project`.
+
+!! Issues
+
+To get a list of all issues attached to a specific `project`, use the macro
+
+```
+<<project-issues "project">>
+```
+
+By default, completed issues will not be shown.
+If you want to see all issues, use the `show` parameter which can take
+the following values:
+
+* `all`, show all issues
+* `closed` show only closed issues
+* `open` show only open issues
+
+For instance
+
+```
+<<project-issues "DevThing core" "closed">>
+```
+
+results in
+
+<<project-issues "DevThing core" "closed">>
+
+As an example, see [[DevThing core]].
+
+!! Timeline
+
+The timeline macro allows to list all the issues relating to a specific
+project. For instance,
+
+```
+<<project-issues-timeline "DevThing core">>
+```
+
+will render
+
+<<project-issues-timeline "DevThing core">>

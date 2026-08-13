@@ -1,0 +1,4 @@
+{
+	"whitelist": ["align","clickToUse","end","format","hiddenDates","margin","max","min","moveable","orientation","showCurrentTime","showMajorLabels","showMinorLabels","stack","start","timeAxis","zoomable","zoomMin","zoomMax"],
+	"navbarReactOptions": ["clickToUse","max","min","zoomMin","zoomMax"]
+}

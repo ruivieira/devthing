@@ -1,0 +1,21 @@
+issue.description: Add support for syntax highlighting
+issue.parent: ISSUE-15
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue line-up
+title: ISSUE-16
+
+Implemented in `v0.0.4`.
+This is support by the [[$:/plugins/tiddlywiki/highlight]] plugin.
+
+Test syntax highlighting:
+
+```css
+css
+ * { margin: 0; padding: 0; } /* micro reset */
+
+html { font-size: 62.5%; }
+body { font-size: 14px; font-size: 1.4rem; } /* =14px */
+h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
+```

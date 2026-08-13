@@ -1,0 +1,11 @@
+caption: {{$:/core/images/new-button}} {{$:/language/Buttons/NewTiddler/Caption}}
+description: {{$:/language/Buttons/NewTiddler/Hint}}
+tags: $:/tags/PageControls
+title: $:/plugins/ruivieira/randompage/ui/Buttons/randompage
+
+\whitespace trim
+<$button actions={{$:/plugins/ruivieira/randompage/ui/Actions/randompage}} tooltip={{$:/language/Buttons/NewTiddler/Hint}} aria-label={{$:/language/Buttons/NewTiddler/Caption}} class=<<tv-config-toolbar-class>>>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/plugins/ruivieira/randompage/images/shuffle}}
+</$list>
+</$button>

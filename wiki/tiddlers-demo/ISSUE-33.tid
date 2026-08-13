@@ -1,0 +1,10 @@
+created: 20201129191319973
+issue.description: Create tasks directly from the project page
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+modified: 20201129191319973
+tags: issue
+title: ISSUE-33
+
+Done in `v0.0.9`.

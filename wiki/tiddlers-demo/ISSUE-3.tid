@@ -1,0 +1,19 @@
+issue.description: Use a `issue.description` field to identify issues, rather than `title`
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue
+title: ISSUE-3
+
+The issue's title should be simple enough to reference in a macro field,
+`<<issue "id">>`, but the description should be informative.
+
+Ideally the behavious should be:
+
+```
+<<issue "ISSUE-3">>
+```
+
+which would render
+
+<<issue "ISSUE-3">>

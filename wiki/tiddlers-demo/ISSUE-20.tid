@@ -1,0 +1,6 @@
+issue.description: Add plugins to DevThing's dependencies
+issue.project: DevThing core
+issue.status: inprogress
+issue.subproject: SubProjectDist
+tags: issue
+title: ISSUE-20

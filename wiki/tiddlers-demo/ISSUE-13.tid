@@ -1,0 +1,10 @@
+issue.description: Support sub-projects
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue
+title: ISSUE-13
+
+Implemented in `v0.0.4`.
+
+Support for subproject macros documentation is [[README]].

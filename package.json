@@ -1,0 +1,15 @@
+{
+  "name": "devthing",
+  "version": "0.0.8",
+  "private": true,
+  "description": "DevThing — browser-based project manager built on TiddlyWiki 5",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "build:demo": "bash scripts/build.sh demo",
+    "build:empty": "bash scripts/build.sh empty",
+    "sync-plugin": "bash scripts/sync-plugin.sh"
+  },
+  "devDependencies": {
+    "tiddlywiki": "5.4.1"
+  }
+}

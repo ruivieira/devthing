@@ -1,0 +1,12 @@
+created: 20201129191319973
+issue.description: Implement tasks
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+modified: 20201129191319973
+tags: issue
+title: ISSUE-25
+
+Implement lightweight tasks. These are not bound to any project.
+
+This was implemented in `v0.0.6`.

@@ -1,0 +1,22 @@
+created: 20201129191319973
+issue.description: Implement sorting in natural order
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+modified: 20201129191319973
+tags: issue
+title: ISSUE-30
+
+Sorting of issues, for instance, should be done in natural order. //i.e.//
+
+* `ISSUE-1`
+* `ISSUE-10`
+* `ISSUE-2`
+
+should be
+
+* `ISSUE-1`
+* `ISSUE-2`
+* `ISSUE-10`
+
+This is now implemented in `0.0.7` using the `naturalSort` method in [[$:/plugins/ruivieira/devthing/utils.js]].

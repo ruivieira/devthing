@@ -1,0 +1,9 @@
+issue.description: Create issues from template
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+tags: issue
+title: ISSUE-10
+
+Implemented in `v0.0.2`.
+New issues can be created using the edit button [[$:/plugins/ruivieira/devthing/ui/Buttons/new-issue]].

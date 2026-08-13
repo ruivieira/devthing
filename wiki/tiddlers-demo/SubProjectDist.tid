@@ -1,0 +1,8 @@
+project: DevThing core
+subproject.description: DevThing distribution
+tags: subproject
+title: SubProjectDist
+
+!! Ongoing issues
+
+<<subproject-issues "SubProjectDist" "open">>

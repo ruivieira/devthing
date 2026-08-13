@@ -1,0 +1,22 @@
+{
+    "description": "DevThing project manager",
+    "plugins": [
+        "tiddlywiki/codemirror",
+        "tiddlywiki/codemirror-closebrackets",
+        "tiddlywiki/codemirror-keymap-vim",
+        "tiddlywiki/codemirror-search-replace",
+        "tiddlywiki/highlight"
+    ],
+    "themes": [
+        "tiddlywiki/snowwhite",
+        "tiddlywiki/vanilla"
+    ],
+    "build": {
+        "index": [
+            "--render", "$:/core/save/all", "index.html", "text/plain"
+        ],
+        "empty": [
+            "--render", "$:/core/save/all", "empty.html", "text/plain"
+        ]
+    }
+}

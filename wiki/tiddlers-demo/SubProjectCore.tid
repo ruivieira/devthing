@@ -1,0 +1,8 @@
+project: DevThing core
+subproject.description: Core functionality of DevThing
+tags: subproject
+title: SubProjectCore
+
+!! Ongoing issues
+
+<<subproject-issues "SubProjectCore" "open">>

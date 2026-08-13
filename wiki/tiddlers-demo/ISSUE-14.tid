@@ -1,0 +1,10 @@
+issue.description: Add support for sub-tasks
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue line-up
+title: ISSUE-14
+
+This was implemented in `v0.0.3`.
+
+[[README]] has an example, as well as [[ISSUE-2]].

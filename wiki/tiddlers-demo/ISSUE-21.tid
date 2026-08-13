@@ -1,0 +1,9 @@
+issue.description: Implement support for sprints
+issue.project: DevThing core
+issue.sprint: Sprint1
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue
+title: ISSUE-21
+
+Implemented in `v0.0.6`.

@@ -1,0 +1,7 @@
+caption: Line-up
+description: Task line-up
+tags: $:/tags/SideBar
+title: $:/plugins/ruivieira/devthing/ui/SideBar/LineUpSideBar
+list-after: $:/core/ui/SideBar/Open
+
+<<line-up>>

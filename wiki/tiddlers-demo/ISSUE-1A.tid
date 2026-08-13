@@ -1,0 +1,8 @@
+issue.date.due: 2020-12-07
+issue.description: This an example of a completed issue
+issue.parent: ISSUE-2
+issue.project: DevThing core
+issue.sprint: Sprint2
+issue.status: done
+tags: issue
+title: ISSUE-1A

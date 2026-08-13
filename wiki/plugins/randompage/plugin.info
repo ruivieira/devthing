@@ -1,0 +1,10 @@
+{
+    "title": "$:/plugins/ruivieira/randompage",
+    "description": "Random page",
+    "author": "Rui Vieira",
+    "version": "0.0.1",
+    "core-version": ">=5.0.8",
+    "source": "https://github.com/ruivieira/tw5-randompage",
+    "plugin-type": "plugin",
+    "dependents": ["$:/themes/tiddlywiki/vanilla"]
+}

@@ -1,0 +1,15 @@
+issue.description: Add due dates to issues
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectCore
+tags: issue
+title: ISSUE-4
+
+This date should be used for timelines as well as future macros to
+display issue grouped by date (overdue, etc..)
+
+This is implemented in `v0.0.2` and can be specified using the field
+
+```
+issue.date.due
+```

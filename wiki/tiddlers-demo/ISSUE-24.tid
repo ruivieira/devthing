@@ -1,0 +1,20 @@
+created: 20201129191319973
+issue.description: Add diagram support
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+modified: 20201129191319973
+tags: issue
+title: ISSUE-24
+
+This is being done using the `mermaid.js` plugin. Example:
+
+<$mermaid text="
+graph LR
+  A[Project] -->|optional| B(Sprint)
+  B -->D[ISSUE-1]
+  B -->E[ISSUE-2]
+  A -->F[ISSUE-3]
+"></$mermaid>
+
+Implemented in `v0.0.6`.

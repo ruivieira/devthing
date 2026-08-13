@@ -1,0 +1,268 @@
+created: 20201129191319973
+modified: 20201129191319973
+title: README
+type: text/vnd.tiddlywiki
+
+!! Welcome to ~DevThing
+
+"""
+`DevThing` is an open source project manager for software development.
+It runs 100% on the browser, consisting of a ''single HTML file''.
+
+You can find the source code at https://github.com/ruivieira/devthing.
+
+`DevThing` development is done in `DevThing` itself.
+The documentation ''is'' the demo.
+"""
+
+!! Projects
+
+To list all the projects, you can use the `<<projects>>` macro. In this case, this will show:
+
+<<projects>>
+
+!!! Sub-projects
+
+"""
+Each project may have subprojects.
+To create a new subproject, create a new tiddle, tag it as `subproject` and specify the linked project by setting `project` field.
+To list all the subprojects, use the macro
+"""
+
+```
+<<project-subprojects $PROJECT>>
+```
+
+For the main [[DevThing core]] project, this would produce
+
+<<project-subprojects "DevThing core">>
+
+"""
+To list the issues in a subproject, use the `<<subproject-issues $SUBPROJECT $STATUS>>` macro.
+For instance, to list all the closed issues in [[SubProjectUI]] use
+`<<subproject-issues "SubProjectUI" "closed">>`. This will produce
+"""
+
+<<subproject-issues "SubProjectUI" "closed">>
+
+See below (or [[Issues]]) for details on how to link an issue to a subproject.
+
+More information in [[Projects]].
+
+!! Issues
+
+Any Tiddler tagged with `issue` will be considered an issue. For in depth view of issue fields used by `DevThing` check out
+[[Issues]]. It is also possible to create an issue directly from a project just by pressing the
+<$button>New issue {{$:/plugins/ruivieira/devthing/images/bug}}</$button> button.
+For an example, go to the [[DevThing core]] project.
+
+!!! Status
+
+Issues can have one of the following status. //Open// status can be:
+
+* <<HB 5>> `todo`
+* <<HB 8>> `next`
+* <<HB 13>> `inprogress`
+* {{$:/plugins/ruivieira/devthing/images/onhold}} `onhold`
+* <<HB 21>> `review`
+
+A special status is <<HB 34>> `done`. This status allows to filter some lists
+in order to remove completed issues.
+
+To show a list of all the issues linked to a specific `$PROJECT`, simply use the macro `<<project-issues $PROJECT $STATUS>>`
+with `$STATUS` being either one of the above or, alternatively, `"open"` or `"closed"`. For instance,
+
+```
+<<project-issues "DevThing core" "open">>
+```
+
+will show all the open ("non-closed") issue for the `DevThing core` project:
+
+<<project-issues "DevThing core" "open">>
+
+A macro to show all the issues for all the projects (group by project) is available as
+`<<projects-issues-all $STATUS>>`. An example can be found in the //Projects// tab on
+the sidebar or by [[opening that view directly|$:/plugins/ruivieira/devthing/ui/SideBar/ProjectsSideBar]].
+
+!!! Parent issues
+
+[[Issues]] can have sub-issues and parents.
+To define it as a sub-issue, define the `issue.parent` field.
+As an example you can see [[ISSUE-2]], which is the parent of [[ISSUE-1]].
+There is no limit to the nesting level and issues from different projects can be linked.
+
+!!! Sprints
+
+Issues can be linked to a specific Sprint (more information on Sprints below).
+To do so, simply fill the `issue.sprint` field.
+
+More information in [[Issues]].
+
+!!! Timeline
+
+To embed an issue timeline the macro
+
+```
+<<project-issues-timeline $PROJECT>>
+```
+
+can be used. In this particular case this would show all the issues (with due dates) for the [[DevThing core]]
+project. Issues on the timeline are clickable.
+
+<<project-issues-timeline "DevThing core">>
+
+!! Line-up
+
+You can add [[Issues]] to a line-up simply by tagging them with `line-up`.
+The current line-up can then be checked in two ways.
+
+Either by embedding the line-up anywhere by using the `line-up` macro:
+
+```
+<<line-up>>
+```
+
+which will, in this instance, show:
+
+<<line-up>>
+
+Or by looking at the //Line-up// tab in the side bar (next to //Open//)
+
+!! Sprints
+
+!!! Current sprint
+
+Sprint workflow is not necessary in order to use `DevThing`, but it is supported.
+
+Sprints can be defined by adding the `sprint` tag.
+Some mandatory fields are `sprint.start` and `sprint.end`. The date format is currently `YYYY-MM-DD`.
+
+To get the current sprint name use the macro
+
+```
+<<current-sprint $PROJECT>>
+```
+
+which will generarate, in this instance:
+
+<<current-sprint "DevThing core">>
+
+!!! All sprints
+
+To list all sprints, use the macro
+
+```
+<<project-sprints $PROJECT>>
+```
+
+which in this case will produce
+
+<<project-sprints "DevThing core">>
+
+The current sprint will be labelled with {{$:/plugins/ruivieira/devthing/images/sprint-black}},
+all other ones are labelled with {{$:/plugins/ruivieira/devthing/images/sprint-faded}}.
+
+!!! Sprint issues
+
+To list issues from a specific project and sprint, you can use the macro
+
+```
+<<project-sprint-issues $PROJECT $SPRINT $STATUS>>
+```
+
+Even though `$SPRINT` has an unique name, you should specify the `$PROJECT`, since issues from
+more than one project might happen in the same sprint, if that is your workflow.
+
+As an example, calling `<<project-sprint-issues "DevThing core" "Sprint2" "all">>` shows
+
+<<project-sprint-issues "DevThing core" "Sprint2" "all">>
+
+!!! Timeline
+
+To embed an issue timeline the macro
+
+```
+<<project-sprints-timeline $PROJECT>>
+```
+
+can be used. In this particular case this would show all the sprints for the [[DevThing core]]
+project. Sprints on the timeline are clickable.
+
+<<project-sprints-timeline "DevThing core">>
+
+!! Tasks
+
+Tasks are lightweight units of work.
+Tasks are linked to a project and are created by tagging a tiddler with `task` and setting a `task.project`.
+Optionally a `task.date.due` date can be added. By default, tasks have a `task.status: open`.
+It is also possible to create a task directly from a project just by pressing the 
+<$button>New task {{$:/core/images/done-button}}</$button> button.
+For an example, go to the [[DevThing core]] project.
+
+
+The macro `<<tasks $PROJECT $STATUS>>` lists the links to all `$PROJECT` tasks with status `$STATUS`.
+For instance, `<<tasks "DevThing core" "all">>` shows all tasks (open and closed) for this project:
+
+<<tasks "DevThing core" "all">>
+
+Tasks can be directly opened or closed from their listings (try it above).
+
+Tasks due //today// have the {{$:/plugins/ruivieira/devthing/images/due-today}} flag, while //overdue// tasks
+have the {{$:/plugins/ruivieira/devthing/images/due-overdue}} flag.
+
+!! Agenda
+
+You can embed an agenda for all issues and tasks with the macro `<<agenda>>`. This would produce the result below:
+
+<<agenda>>
+
+You can also see the [[$:/plugins/ruivieira/devthing/ui/SideBar/AgendaSideBar]] sidebar in the right, next to the
+//Projects// sidebar.
+
+!! Other features
+
+!!! Syntax highlighting
+
+Syntax highlighting supported within code blocks.
+
+```java
+// Parallel Processing
+import java.util.List;
+
+List<String> dataList = null;
+dataList.parallelStream().map(line -> processItem(line));
+```
+
+!!! Diagram support
+
+Diagrams are supported using the `mermaid.js` plugin.
+The diagram code can be embeded using the `<$mermaid text=$DIAGRAM></$mermaid>` macro.
+For instance
+
+```
+<$mermaid text="
+graph LR
+  A[Project] -->|optional| B(Sprint)
+  B -->D[ISSUE-1]
+  B -->E[ISSUE-2]
+  A -->F[ISSUE-3]
+"></$mermaid>
+```
+
+produces
+
+<$mermaid text="
+graph LR
+  A[Project] -->|optional| B(Sprint)
+  B -->D[ISSUE-1]
+  B -->E[ISSUE-2]
+  A -->F[ISSUE-3]
+"></$mermaid>
+
+!!! Vim key bindings
+
+`DevThing` supports Vim key bindings when editing tiddlers.
+
+However, due to `ESC` closing the editor, it is recommended to use `Ctrl+C` to change Vim modes.
+
+The keymap can be changed at [[$:/config/codemirror/keyMap]].

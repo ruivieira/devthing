@@ -1,0 +1,10 @@
+created: 20201129191319973
+issue.description: Display subtasks properly in issue listings
+issue.project: DevThing core
+issue.status: next
+issue.subproject: SubProjectUI
+modified: 20201129191319973
+tags: issue line-up
+title: ISSUE-22
+
+For instance, show indented subtasks under the parent when using an issue listing.

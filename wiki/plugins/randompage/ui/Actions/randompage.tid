@@ -1,0 +1,6 @@
+description: Go to a random page
+tags: $:/tags/Actions
+title: $:/plugins/ruivieira/randompage/ui/Actions/randompage
+
+<$action-navigate $to=<<random-page>>/>
+

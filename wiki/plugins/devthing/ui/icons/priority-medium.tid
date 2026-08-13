@@ -1,0 +1,6 @@
+tags: $:/tags/Image
+title: $:/plugins/ruivieira/devthing/images/priority-medium
+
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" height="1rem" width="1rem" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.499 8.248h15m-15 7.501h15" />
+</svg>

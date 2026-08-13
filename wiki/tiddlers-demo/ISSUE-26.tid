@@ -1,0 +1,15 @@
+created: 20201129191319973
+issue.description: Bundled font should be optional
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+modified: 20201129191319973
+tags: issue
+title: ISSUE-26
+
+At the moment, the monospace font bundled with `DevThing` replaces
+whichever font is being used in a wiki.
+
+The font should be inherited from the wiki, but possible to change in the settings.
+
+This is now done in `v0.0.7`.

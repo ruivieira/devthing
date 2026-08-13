@@ -1,0 +1,14 @@
+issue.description: Ability to hide completed issues from listing
+issue.project: DevThing core
+issue.status: done
+issue.subproject: SubProjectUI
+tags: issue
+title: ISSUE-6
+
+This can be specified in the macro as:
+
+```
+<<project-issues "project" "open">>
+```
+
+This was done in `v0.0.2`.

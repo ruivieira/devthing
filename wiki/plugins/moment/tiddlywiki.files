@@ -1,0 +1,32 @@
+{
+  "tiddlers": [
+    {
+      "file": "moment/min/moment-with-locales.min.js",
+      "fields": {
+        "type": "application/javascript",
+        "title": "$:/plugins/kixam/moment/moment.js",
+        "module-type": "library"
+      }
+    },
+    {
+      "file": "icon.svg",
+      "fields": {
+        "title": "$:/plugins/kixam/moment/icon",
+        "tags": "$:/tags/Image",
+        "type": "text/vnd.tiddlywiki"
+      }
+    },
+    {
+      "file": "readme.tid",
+      "fields": {
+        "title": "$:/plugins/kixam/moment/readme"
+      }
+    },
+    {
+      "file": "license.tid",
+      "fields": {
+        "title": "$:/plugins/kixam/moment/license"
+      }
+    }
+  ]
+}
