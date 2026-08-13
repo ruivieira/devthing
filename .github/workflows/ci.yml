@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.js'
+      - 'ui/**'
+      - 'theme/**'
+      - 'wiki/**'
+      - 'scripts/**'
+      - 'docs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'plugin.info'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths:
+      - '*.js'
+      - 'ui/**'
+      - 'theme/**'
+      - 'wiki/**'
+      - 'scripts/**'
+      - 'docs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'plugin.info'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Verify build outputs exist
+        run: test -f docs/index.html && test -f docs/empty.html
+
+      - name: Verify committed HTML matches build
+        run: git diff --exit-code docs/
+
+      - name: Smoke test built HTML
+        run: |
+          grep -q 'DevThing' docs/index.html
+          grep -q '$:/plugins/ruivieira/devthing' docs/index.html
+          grep -q '$:/plugins/ruivieira/devthing' docs/empty.html

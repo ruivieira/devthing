@@ -1,5 +1,8 @@
 # devthing
 
+[![CI](https://github.com/ruivieira/devthing/actions/workflows/ci.yml/badge.svg)](https://github.com/ruivieira/devthing/actions/workflows/ci.yml)
+[![ShellCheck](https://github.com/ruivieira/devthing/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/ruivieira/devthing/actions/workflows/shellcheck.yml)
+
 Welcome to `DevThing`.
 
 `DevThing` is an open source project manager for software development.
